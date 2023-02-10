@@ -23,6 +23,8 @@ import { gapi } from 'gapi-script';
 import P3 from '../Images/P3.webp';
 import { useDispatch } from 'react-redux';
 import { Type } from '../Store/User';
+import { Type1 } from '../Store/U-Data';
+
 
 // alert function for registration
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -319,8 +321,12 @@ function Auth() {
     const onSubmitForLoginPage = (data) => {
         axios.post('http://localhost:5002/user/login', data).then((res) => {
             const a = (res.data.UserType);
+            const b = (res.data);
+            console.log(b)
             window.localStorage.setItem('userType', res.data.UserType);
             dispatch(Type(a));
+            dispatch(Type1(b));
+
             navigate("/Dashboard");
             console.log("Hi!");
         }).catch(() => {

@@ -18,13 +18,16 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import SpeedDial from '@mui/material/SpeedDial';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Person2Icon from '@mui/icons-material/Person2';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
+import { Avatar } from '@mui/material';
+import { U1 } from '../../Store/U-Data';
+import { useSelector } from 'react-redux';
+
 
 
 
@@ -34,7 +37,6 @@ const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
     position: 'absolute',
     '&.MuiSpeedDial-directionDown, &.MuiSpeedDial-directionRight': {
         top: theme.spacing(.5),
-        left: theme.spacing(200),
     },
 }));
 
@@ -112,6 +114,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function NavDrawer() {
 
 
+    const e = useSelector(U1);
+
 
     const navigate = useNavigate();
 
@@ -125,7 +129,7 @@ export default function NavDrawer() {
     // hover profile
     const actions = [
         { icon: <AccountCircleIcon />, name: 'Profile' },
-        { icon: < AccountBoxIcon  />, name: 'Account' },
+        { icon: < AccountBoxIcon />, name: 'Account' },
         { icon: <DashboardIcon />, name: 'Dashboard' },
         { icon: <LogoutIcon onClick={Logout} />, name: 'Logout' },
     ];
@@ -204,25 +208,24 @@ export default function NavDrawer() {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     </Box>
+                    <Typography sx={{ mr: 1 }} variant='h6' color="black">{e.firstname}</Typography>
 
                     <Box sx={{ flexGrow: 0 }}>
-                    <Typography sx={{mr:10}} variant='h6' color="black">Reshab</Typography>
-                        
-                        
-                            <StyledSpeedDial
-                                ariaLabel="Profile"
-                                icon={<Person2Icon/>}
-                                direction="down"
-                            >
-                                {actions.map((action) => (
-                                    <SpeedDialAction
-                                        key={action.name}
-                                        icon={action.icon}
-                                        tooltipTitle={action.name}
-                                    />
-                                ))}
-                            </StyledSpeedDial>
-                        
+                        <Typography sx={{ mr: 9 }} />
+                        <StyledSpeedDial
+                            ariaLabel="Profile"
+                            icon={<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />}
+                            direction="down"
+                        >
+                            {actions.map((action) => (
+                                <SpeedDialAction
+                                    key={action.name}
+                                    icon={action.icon}
+                                    tooltipTitle={action.name}
+                                />
+                            ))}
+                        </StyledSpeedDial>
+
 
                     </Box>
                 </Toolbar>
