@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-// const a = window.localStorage.getItem('userType');
+const data = window.localStorage.getItem('userData');
+
 
 export const UserDataAction = createSlice({
     name: 'UserData',
-    initialState: { value: "" },
+    initialState: { value: JSON.parse(data) },
 
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {

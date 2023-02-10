@@ -322,11 +322,11 @@ function Auth() {
         axios.post('http://localhost:5002/user/login', data).then((res) => {
             const a = (res.data.UserType);
             const b = (res.data);
-            console.log(b)
+            const c = JSON.stringify(b)
+            window.localStorage.setItem('userData', c);
             window.localStorage.setItem('userType', res.data.UserType);
             dispatch(Type(a));
             dispatch(Type1(b));
-
             navigate("/Dashboard");
             console.log("Hi!");
         }).catch(() => {

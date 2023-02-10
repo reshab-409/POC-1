@@ -123,6 +123,7 @@ export default function NavDrawer() {
     const Logout = () => {
         navigate("/")
         window.localStorage.removeItem("userType");
+        window.localStorage.removeItem("userData");
         // navigate("/");
     };
 
