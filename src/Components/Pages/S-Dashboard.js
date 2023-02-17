@@ -95,7 +95,7 @@ export default function StudentDashboard() {
 
     return (
         <>
-            <Box sx={{ display: 'flex', justifyContent: "center", backgroundColor: "#D3D3D3" }}>
+            <Card sx={{ display: 'flex', justifyContent: "center", backgroundColor: "#D3D3D3" }}>
                 <NavDrawer />
 
                 {/* Body */}
@@ -140,7 +140,7 @@ export default function StudentDashboard() {
                         </Box>
                     </Box>
                 </Box>
-            </Box>
+            </Card>
         </>
     );
 };
